@@ -1,0 +1,20 @@
+
+On the AfterSchool application we would like to allow students to send SMS messages to one another.  The link sent in these applications is in this form: 
+
+https://afterschoolapp.com/[EMOJIS]/AfterSchoolUniversity/ 
+
+The token [EMOJIS] then maps to an INTEGER id of the orginal sender.  The task is to 
+
+1) Create a function that maps the [EMOJIS] to unqiue INTEGER ids and a function which takes INTEGER ids and maps to [EMOJIS]. The least amount of EMOJIS the better. 
+
+Example: 
+http://www.afterschoolapp.com/????????????/LowellHighSchool 
+or 
+http://www.afterschoolapp.com/????/LowellHighSchool 
+
+2) Create a mod rewrite rule to support the url scheme. 
+EG. http://www.afterschoolapp.com/????????/LowellHighSchool could be interpreted as: http://www.afterschoolapp.com/?id=392382&s=LowellHighSchool
+
+The only emojis we would like to use are these standardized emojis: 
+????????????????????????????????
+
