@@ -1,13 +1,5 @@
 <?php
 
-$emojyClass = new Emojy($_SERVER['REQUEST_URI'], $_GET);
-
-$emojyIcons = $emojyClass->getEmojy();
-$emojyIcons = $emojyClass->getEmojyArray($emojyIcons);
-
-//var_dump($emojyIcons);
-
-
 class Emojy
 {
 	public $request = NULL;
@@ -29,50 +21,59 @@ class Emojy
 		//$uri = array_values(array_filter(explode('/', $this->request)));
 		//if (!isset($uri[0])) return NULL;
 
-		//$emojyIcons = urldecode($uri[0]);
+		//$emojyIcons = $uri[0];
 
 		/**
 		 * another way of getting the emojy based on the .htaccess rule
 		 */
-		$emojyIcons = urldecode($this->get['emojy']);
+		$emojyIcons = urlencode($this->get['emojy']);
 
-		return $emojyIcons;
+		return str_replace('%', '', $emojyIcons);
 	}
 
 	public function getEmojyArray($emojyIcons)
 	{
 		$emojy = $this->encodeEmoji($emojyIcons);
+		var_dump($emojyIcons);
+		var_dump($emojy);
 		$emojy = array_filter(explode(';', $emojy)); // I could have used preg_split
 
+		$arr = [];
 		foreach ($emojy as $val) {
-			$val = $val . ';';
-			//var_dump($val);
-			//var_dump($this->emojyData(12));
-			$this->emojyData(NULL, $val);
+			$val   = $val . ';';
+			$arr[] = $this->emojyData(NULL, $val);
 		}
 
-		return $emojy;
+		return empty($arr) ? NULL : $arr;
 	}
 
+	/**
+	 * @param null $key
+	 * @param null $value
+	 *
+	 * http://apps.timwhitlock.info/unicode/inspect?s=%E2%9D%A4
+	 *
+	 * @return array|mixed
+	 */
 	public function emojyData($key = NULL, $value = NULL)
 	{
 		$emojis = [
-			['key' => 10, 'value' => '&#x2764;'],
-			['key' => 11, 'value' => '&#x1F60D;'],
-			['key' => 12, 'value' => '&#x1F648;'],
-			['key' => 13, 'value' => '&#x1F602;'],
-			['key' => 14, 'value' => '&#x1F48B;'],
-			['key' => 15, 'value' => '&#x1F60E;'],
-			['key' => 16, 'value' => '&#x1F4AF;'],
-			['key' => 17, 'value' => '&#x1F609;'],
-			['key' => 18, 'value' => '&#x1F605;'],
-			['key' => 19, 'value' => '&#x1F608;'],
-			['key' => 20, 'value' => '&#x1F61C;'],
-			['key' => 21, 'value' => '&#x1F389;'],
-			['key' => 22, 'value' => '&#x1F60B;'],
-			['key' => 23, 'value' => '&#x1F388;'],
-			['key' => 24, 'value' => '&#x1F603;'],
-			['key' => 25, 'value' => '&#x1F60F;'],
+			['key' => 10, 'value' => '&#x2764;' , 'utf8' => 'E29DA4'],
+			['key' => 11, 'value' => '&#x1F60D;', 'utf8' => 'F09F988D'],
+			['key' => 12, 'value' => '&#x1F648;', 'utf8' => '%E2%9D%A4'],
+			['key' => 13, 'value' => '&#x1F602;', 'utf8' => '%E2%9D%A4'],
+			['key' => 14, 'value' => '&#x1F48B;', 'utf8' => '%E2%9D%A4'],
+			['key' => 15, 'value' => '&#x1F60E;', 'utf8' => '%E2%9D%A4'],
+			['key' => 16, 'value' => '&#x1F4AF;', 'utf8' => '%E2%9D%A4'],
+			['key' => 17, 'value' => '&#x1F609;', 'utf8' => '%E2%9D%A4'],
+			['key' => 18, 'value' => '&#x1F605;', 'utf8' => '%E2%9D%A4'],
+			['key' => 19, 'value' => '&#x1F608;', 'utf8' => '%E2%9D%A4'],
+			['key' => 20, 'value' => '&#x1F61C;', 'utf8' => '%E2%9D%A4'],
+			['key' => 21, 'value' => '&#x1F389;', 'utf8' => '%E2%9D%A4'],
+			['key' => 22, 'value' => '&#x1F60B;', 'utf8' => '%E2%9D%A4'],
+			['key' => 23, 'value' => '&#x1F388;', 'utf8' => '%E2%9D%A4'],
+			['key' => 24, 'value' => '&#x1F603;', 'utf8' => '%E2%9D%A4'],
+			['key' => 25, 'value' => '&#x1F60F;', 'utf8' => '%E2%9D%A4'],
 		];
 
 		if ($key) {
@@ -83,16 +84,7 @@ class Emojy
 
 		if ($value) {
 			foreach ($emojis as $k => $emoji) {
-				var_dump($value);
-				var_dump($emoji['value']);
-				var_dump((string)$emoji['value'] == (string)$value);
-				var_dump((string)$emoji['value'] === (string)$value);
-				var_dump($emoji['value'] === '&#x1f605;');
-				var_dump($value === '&#x1f605;');
-				var_dump('-------------------');
-				if ($emoji['value'] == $value) {
-					return $emojis[$k];
-				}
+				if (strtolower($emoji['value']) == strtolower($value)) return $emojis[$k];
 			}
 		}
 
@@ -129,3 +121,50 @@ class Emojy
 		return $content;
 	}
 }
+
+$emojyClass = new Emojy($_SERVER['REQUEST_URI'], $_GET);
+
+$emojyIcons = $emojyClass->getEmojy();
+$emojyIcons = $emojyClass->getEmojyArray($emojyIcons);
+$emojyIcons = $emojyIcons ? (isset($emojyIcons[0]) ? $emojyIcons : [$emojyIcons]) : NULL;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>After School Test</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="jumbotron">
+				<?php if ($emojyIcons) { ?>
+					<table class="table">
+						<tr>
+							<td>Key</td>
+							<td>Value</td>
+						</tr>
+						<?php foreach ($emojyIcons as $emojy) { ?>
+							<tr>
+								<td><?php echo $emojy['key']; ?></td>
+								<td><?php echo $emojy['value']; ?></td>
+							</tr>
+						<?php } ?>
+					</table>
+				<?php } else { ?>
+					<p>No results</p>
+				<?php } ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+
