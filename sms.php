@@ -31,54 +31,60 @@ class Emojy
 		return str_replace('%', '', $emojyIcons);
 	}
 
-	public function getEmojyArray($emojyIcons)
+	public function getEmojyMessage($emojyString)
 	{
-		$emojy = $this->encodeEmoji($emojyIcons);
-		var_dump($emojyIcons);
-		var_dump($emojy);
-		$emojy = array_filter(explode(';', $emojy)); // I could have used preg_split
-
-		$arr = [];
-		foreach ($emojy as $val) {
-			$val   = $val . ';';
-			$arr[] = $this->emojyData(NULL, $val);
+		foreach ($this->parseEmojy() as $v) {
+			if (strpos($emojyString, $v['utf8']) !== FALSE) $emojyString = str_replace($v['utf8'], '-' . $v['utf8'] . '-', $emojyString);
 		}
 
-		return empty($arr) ? NULL : $arr;
+		$emojyString = array_filter(explode('-', $emojyString));
+
+		$arr = [];
+		foreach ($emojyString as $val) $arr[] = $this->parseEmojy(NULL, $val);
+
+		return $this->toArray($arr);
+	}
+
+	public function getUniqueEmojy($emojyString)
+	{
+		$arr = [];
+		foreach ($this->parseEmojy() as $v) {
+			if (strpos($emojyString, $v['utf8']) !== FALSE) $arr[] = $this->parseEmojy(NULL, $v['utf8']);
+		}
+
+		return $this->toArray($arr);
+	}
+
+	public function toArray($arr = NULL)
+	{
+		if (!$arr) return NULL;
+		if (empty($arr)) return NULL;
+
+		return $arr;
 	}
 
 	/**
 	 * @param null $key
+	 * @param null $utf8
 	 * @param null $value
 	 *
 	 * http://apps.timwhitlock.info/unicode/inspect?s=%E2%9D%A4
 	 *
 	 * @return array|mixed
 	 */
-	public function emojyData($key = NULL, $value = NULL)
+	public function parseEmojy($key = NULL, $utf8 = NULL, $value = NULL)
 	{
-		$emojis = [
-			['key' => 10, 'value' => '&#x2764;' , 'utf8' => 'E29DA4'],
-			['key' => 11, 'value' => '&#x1F60D;', 'utf8' => 'F09F988D'],
-			['key' => 12, 'value' => '&#x1F648;', 'utf8' => '%E2%9D%A4'],
-			['key' => 13, 'value' => '&#x1F602;', 'utf8' => '%E2%9D%A4'],
-			['key' => 14, 'value' => '&#x1F48B;', 'utf8' => '%E2%9D%A4'],
-			['key' => 15, 'value' => '&#x1F60E;', 'utf8' => '%E2%9D%A4'],
-			['key' => 16, 'value' => '&#x1F4AF;', 'utf8' => '%E2%9D%A4'],
-			['key' => 17, 'value' => '&#x1F609;', 'utf8' => '%E2%9D%A4'],
-			['key' => 18, 'value' => '&#x1F605;', 'utf8' => '%E2%9D%A4'],
-			['key' => 19, 'value' => '&#x1F608;', 'utf8' => '%E2%9D%A4'],
-			['key' => 20, 'value' => '&#x1F61C;', 'utf8' => '%E2%9D%A4'],
-			['key' => 21, 'value' => '&#x1F389;', 'utf8' => '%E2%9D%A4'],
-			['key' => 22, 'value' => '&#x1F60B;', 'utf8' => '%E2%9D%A4'],
-			['key' => 23, 'value' => '&#x1F388;', 'utf8' => '%E2%9D%A4'],
-			['key' => 24, 'value' => '&#x1F603;', 'utf8' => '%E2%9D%A4'],
-			['key' => 25, 'value' => '&#x1F60F;', 'utf8' => '%E2%9D%A4'],
-		];
+		$emojis = $this->emojyData();
 
 		if ($key) {
 			foreach ($emojis as $k => $emoji) {
 				if ($emoji['key'] == $key) return $emojis[$k];
+			}
+		}
+
+		if ($utf8) {
+			foreach ($emojis as $k => $emoji) {
+				if (strtolower($emoji['utf8']) == strtolower($utf8)) return $emojis[$k];
 			}
 		}
 
@@ -91,42 +97,37 @@ class Emojy
 		return $emojis;
 	}
 
-	public function encodeEmoji($content)
+	public function emojyData()
 	{
-		if (function_exists('mb_convert_encoding')) {
-			$regex = '/(
-		     \x23\xE2\x83\xA3               # Digits
-		     [\x30-\x39]\xE2\x83\xA3
-		   | \xF0\x9F[\x85-\x88][\xA6-\xBF] # Enclosed characters
-		   | \xF0\x9F[\x8C-\x97][\x80-\xBF] # Misc
-		   | \xF0\x9F\x98[\x80-\xBF]        # Smilies
-		   | \xF0\x9F\x99[\x80-\x8F]
-		   | \xF0\x9F\x9A[\x80-\xBF]        # Transport and map symbols
-		)/x';
-
-			$matches = array();
-			if (preg_match_all($regex, $content, $matches)) {
-				if (!empty($matches[1])) {
-					foreach ($matches[1] as $emoji) {
-						$unpacked = unpack('H*', mb_convert_encoding($emoji, 'UTF-32', 'UTF-8'));
-						if (isset($unpacked[1])) {
-							$entity  = '&#x' . ltrim($unpacked[1], '0') . ';';
-							$content = str_replace($emoji, $entity, $content);
-						}
-					}
-				}
-			}
-		}
-
-		return $content;
+		return [
+			['key' => 10, 'utf8' => 'E29DA4', 'value' => '&#x2764;'],
+			['key' => 11, 'utf8' => 'F09F988D', 'value' => '&#x1F60D;'],
+			['key' => 12, 'utf8' => 'F09F988D1', 'value' => '&#x1F648;'],
+			['key' => 13, 'utf8' => 'F09F988D2', 'value' => '&#x1F602;'],
+			['key' => 14, 'utf8' => 'F09F988D1', 'value' => '&#x1F48B;'],
+			['key' => 15, 'utf8' => 'F09F988D1', 'value' => '&#x1F60E;'],
+			['key' => 16, 'utf8' => 'F09F988D1', 'value' => '&#x1F4AF;'],
+			['key' => 17, 'utf8' => 'F09F988D1', 'value' => '&#x1F609;'],
+			['key' => 18, 'utf8' => 'F09F988D1', 'value' => '&#x1F605;'],
+			['key' => 19, 'utf8' => 'F09F988D1', 'value' => '&#x1F608;'],
+			['key' => 20, 'utf8' => 'F09F988D1', 'value' => '&#x1F61C;'],
+			['key' => 21, 'utf8' => 'F09F988D1', 'value' => '&#x1F389;'],
+			['key' => 22, 'utf8' => 'F09F988D1', 'value' => '&#x1F60B;'],
+			['key' => 23, 'utf8' => 'F09F988D1', 'value' => '&#x1F388;'],
+			['key' => 24, 'utf8' => 'F09F988D1', 'value' => '&#x1F603;'],
+			['key' => 25, 'utf8' => 'F09F988D1', 'value' => '&#x1F60F;'],
+		];
 	}
 }
 
 $emojyClass = new Emojy($_SERVER['REQUEST_URI'], $_GET);
 
-$emojyIcons = $emojyClass->getEmojy();
-$emojyIcons = $emojyClass->getEmojyArray($emojyIcons);
-$emojyIcons = $emojyIcons ? (isset($emojyIcons[0]) ? $emojyIcons : [$emojyIcons]) : NULL;
+$emojyString   = $emojyClass->getEmojy();
+$emojyMessage = $emojyClass->getEmojyMessage($emojyString);
+$emojyIcons   = $emojyClass->getUniqueEmojy($emojyString);
+
+var_dump($emojyMessage);
+var_dump($emojyIcons);
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +136,7 @@ $emojyIcons = $emojyIcons ? (isset($emojyIcons[0]) ? $emojyIcons : [$emojyIcons]
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>After School Test</title>
+	<title>AS Test</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 <body>
@@ -143,6 +144,25 @@ $emojyIcons = $emojyIcons ? (isset($emojyIcons[0]) ? $emojyIcons : [$emojyIcons]
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
+			<div class="jumbotron">
+				<?php if ($emojyMessage) { ?>
+					<table class="table">
+						<tr>
+							<td>Key</td>
+							<td>Value</td>
+						</tr>
+						<?php foreach ($emojyMessage as $emojy) { ?>
+							<tr>
+								<td><?php echo $emojy['key']; ?></td>
+								<td><?php echo $emojy['value']; ?></td>
+							</tr>
+						<?php } ?>
+					</table>
+				<?php } else { ?>
+					<p>No Results</p>
+				<?php } ?>
+			</div>
+
 			<div class="jumbotron">
 				<?php if ($emojyIcons) { ?>
 					<table class="table">
@@ -158,7 +178,7 @@ $emojyIcons = $emojyIcons ? (isset($emojyIcons[0]) ? $emojyIcons : [$emojyIcons]
 						<?php } ?>
 					</table>
 				<?php } else { ?>
-					<p>No results</p>
+					<p>No Results</p>
 				<?php } ?>
 			</div>
 		</div>
