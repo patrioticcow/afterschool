@@ -142,7 +142,7 @@ $emojyIcons   = $emojyClass->getUniqueEmojy($emojyString);
 	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron">
-				<p><a href="/❤😍🙈😂💋😎💯😉😈😜🎉😋🎈😃😏😅/LowellHighSchool"><?php echo $_SERVER['HTTP_HOST']; ?>/❤😍🙈😂💋😎💯😉😈😜🎉😋🎈😃😏😅/LowellHighSchool</a></p>
+				<p><strong>Test Url</strong> <a href="/❤😍🙈😂💋😎💯😉😈😜🎉😋🎈😃😏😅/LowellHighSchool"><?php echo $_SERVER['HTTP_HOST']; ?>/❤😍🙈😂💋😎💯😉😈😜🎉😋🎈😃😏😅/LowellHighSchool</a></p>
 				<p><strong>Query:</strong> <?php echo $_GET['query']; ?></p>
 			</div>
 			<div class="jumbotron">
@@ -190,4 +190,3 @@ $emojyIcons   = $emojyClass->getUniqueEmojy($emojyString);
 
 </body>
 </html>
-
