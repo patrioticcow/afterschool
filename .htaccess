@@ -5,25 +5,24 @@
 
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !-f
-	#RewriteRule ^(.*)(.+?) sms.php?name=$1&b=$2&c=$3 [L,QSA,NC]
 
-    # not the best htaccess rule we'he seen, but it does the job
-	RewriteRule ^(❤)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😍)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(🙈)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😂)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(💋)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😎)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(💯)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😉)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😅)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😈)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😜)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(🎉)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😋)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(🎈)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😃)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
-    RewriteRule ^(😏)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+	RewriteRule ^([^/]+)/([^/]+)$ sms.php?emojy=$1&query=$2 [L,QSA,NC]
+
+    # this can work as well
+	#RewriteRule ^(❤)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😍)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(🙈)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😂)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(💋)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😎)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(💯)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😉)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😈)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😜)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(🎉)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😋)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(🎈)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😃)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😏)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
+    #RewriteRule ^(😅)(.+?)/([^/]+)$ sms.php?emojy=$1$2&query=$3 [L,QSA,NC]
 </IfModule>
-
-

@@ -102,32 +102,28 @@ class Emojy
 		return [
 			['key' => 10, 'utf8' => 'E29DA4', 'value' => '&#x2764;'],
 			['key' => 11, 'utf8' => 'F09F988D', 'value' => '&#x1F60D;'],
-			['key' => 12, 'utf8' => 'F09F988D1', 'value' => '&#x1F648;'],
-			['key' => 13, 'utf8' => 'F09F988D2', 'value' => '&#x1F602;'],
-			['key' => 14, 'utf8' => 'F09F988D1', 'value' => '&#x1F48B;'],
-			['key' => 15, 'utf8' => 'F09F988D1', 'value' => '&#x1F60E;'],
-			['key' => 16, 'utf8' => 'F09F988D1', 'value' => '&#x1F4AF;'],
-			['key' => 17, 'utf8' => 'F09F988D1', 'value' => '&#x1F609;'],
-			['key' => 18, 'utf8' => 'F09F988D1', 'value' => '&#x1F605;'],
-			['key' => 19, 'utf8' => 'F09F988D1', 'value' => '&#x1F608;'],
-			['key' => 20, 'utf8' => 'F09F988D1', 'value' => '&#x1F61C;'],
-			['key' => 21, 'utf8' => 'F09F988D1', 'value' => '&#x1F389;'],
-			['key' => 22, 'utf8' => 'F09F988D1', 'value' => '&#x1F60B;'],
-			['key' => 23, 'utf8' => 'F09F988D1', 'value' => '&#x1F388;'],
-			['key' => 24, 'utf8' => 'F09F988D1', 'value' => '&#x1F603;'],
-			['key' => 25, 'utf8' => 'F09F988D1', 'value' => '&#x1F60F;'],
+			['key' => 12, 'utf8' => 'F09F9988', 'value' => '&#x1F648;'],
+			['key' => 13, 'utf8' => 'F09F9882', 'value' => '&#x1F602;'],
+			['key' => 14, 'utf8' => 'F09F928B', 'value' => '&#x1F48B;'],
+			['key' => 15, 'utf8' => 'F09F988E', 'value' => '&#x1F60E;'],
+			['key' => 16, 'utf8' => 'F09F92AF', 'value' => '&#x1F4AF;'],
+			['key' => 17, 'utf8' => 'F09F9889', 'value' => '&#x1F609;'],
+			['key' => 18, 'utf8' => 'F09F9888', 'value' => '&#x1F608;'],
+			['key' => 19, 'utf8' => 'F09F989C', 'value' => '&#x1F61C;'],
+			['key' => 20, 'utf8' => 'F09F8E89', 'value' => '&#x1F389;'],
+			['key' => 21, 'utf8' => 'F09F988B', 'value' => '&#x1F60B;'],
+			['key' => 22, 'utf8' => 'F09F8E88', 'value' => '&#x1F388;'],
+			['key' => 23, 'utf8' => 'F09F9883', 'value' => '&#x1F603;'],
+			['key' => 24, 'utf8' => 'F09F988F', 'value' => '&#x1F60F;'],
+			['key' => 25, 'utf8' => 'F09F9885', 'value' => '&#x1F605;'],
 		];
 	}
 }
 
-$emojyClass = new Emojy($_SERVER['REQUEST_URI'], $_GET);
-
-$emojyString   = $emojyClass->getEmojy();
+$emojyClass   = new Emojy($_SERVER['REQUEST_URI'], $_GET);
+$emojyString  = $emojyClass->getEmojy();
 $emojyMessage = $emojyClass->getEmojyMessage($emojyString);
 $emojyIcons   = $emojyClass->getUniqueEmojy($emojyString);
-
-var_dump($emojyMessage);
-var_dump($emojyIcons);
 ?>
 
 <!DOCTYPE html>
@@ -140,11 +136,17 @@ var_dump($emojyIcons);
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 <body>
-
+<br>
+<br>
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="jumbotron">
+				<p><a href="/❤😍🙈😂💋😎💯😉😈😜🎉😋🎈😃😏😅/LowellHighSchool"><?php echo $_SERVER['HTTP_HOST']; ?>/❤😍🙈😂💋😎💯😉😈😜🎉😋🎈😃😏😅/LowellHighSchool</a></p>
+				<p><strong>Query:</strong> <?php echo $_GET['query']; ?></p>
+			</div>
+			<div class="jumbotron">
+				<p>All Emoji Message</p>
 				<?php if ($emojyMessage) { ?>
 					<table class="table">
 						<tr>
@@ -164,6 +166,7 @@ var_dump($emojyIcons);
 			</div>
 
 			<div class="jumbotron">
+				<p>Unique Emoji</p>
 				<?php if ($emojyIcons) { ?>
 					<table class="table">
 						<tr>
