@@ -152,11 +152,15 @@ $emojyIcons   = $emojyClass->getUniqueEmojy($emojyString);
 						<tr>
 							<td>Key</td>
 							<td>Value</td>
+							<td>UTF8</td>
+							<td>Value</td>
 						</tr>
 						<?php foreach ($emojyMessage as $emojy) { ?>
 							<tr>
 								<td><?php echo $emojy['key']; ?></td>
 								<td><?php echo $emojy['value']; ?></td>
+								<td><code><?php echo $emojy['utf8']; ?></code></td>
+								<td><code><?php echo str_replace(['&#x', ';'], '',  $emojy['value']); ?></code></td>
 							</tr>
 						<?php } ?>
 					</table>
@@ -172,11 +176,15 @@ $emojyIcons   = $emojyClass->getUniqueEmojy($emojyString);
 						<tr>
 							<td>Key</td>
 							<td>Value</td>
+							<td>UTF8</td>
+							<td>Value</td>
 						</tr>
 						<?php foreach ($emojyIcons as $emojy) { ?>
 							<tr>
 								<td><?php echo $emojy['key']; ?></td>
 								<td><?php echo $emojy['value']; ?></td>
+								<td><code><?php echo $emojy['utf8']; ?></code></td>
+								<td><code><?php echo str_replace(['&#x', ';'], '',  $emojy['value']); ?></code></td>
 							</tr>
 						<?php } ?>
 					</table>

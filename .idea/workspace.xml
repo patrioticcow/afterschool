@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="249a5645-d3d5-461c-928b-f2e5bb58fe7c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sms.php" afterPath="$PROJECT_DIR$/sms.php" />
     </list>
     <ignored path="afterschool.iws" />
@@ -47,9 +46,14 @@
       <file leaf-file-name="sms.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sms.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
-              <folding />
+            <state relative-caret-position="368">
+              <caret line="180" column="29" selection-start-line="180" selection-start-column="29" selection-end-line="180" selection-end-column="29" />
+              <folding>
+                <marker date="1465870849109" expanded="true" signature="4900:5183" ph="..." />
+                <marker date="1465870849109" expanded="true" signature="4983:5183" ph="..." />
+                <marker date="1465870849109" expanded="true" signature="4994:5091" ph="..." />
+                <marker date="1465870849109" expanded="true" signature="5152:5183" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -179,12 +183,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1465868765955</updated>
-      <workItem from="1465868767258" duration="1948000" />
+      <workItem from="1465868767258" duration="2082000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1948000" />
+    <option name="totallyTimeSpent" value="2082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -252,9 +256,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sms.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="144" column="45" selection-start-line="144" selection-start-column="45" selection-end-line="144" selection-end-column="45" />
-          <folding />
+        <state relative-caret-position="368">
+          <caret line="180" column="29" selection-start-line="180" selection-start-column="29" selection-end-line="180" selection-end-column="29" />
+          <folding>
+            <marker date="1465870849109" expanded="true" signature="4900:5183" ph="..." />
+            <marker date="1465870849109" expanded="true" signature="4983:5183" ph="..." />
+            <marker date="1465870849109" expanded="true" signature="4994:5091" ph="..." />
+            <marker date="1465870849109" expanded="true" signature="5152:5183" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
