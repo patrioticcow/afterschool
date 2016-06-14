@@ -5,12 +5,25 @@ class Emojy
 	public $request = NULL;
 	public $get     = NULL;
 
+	/**
+	 * Emojy constructor.
+	 *
+	 * @param null $request
+	 * @param null $get
+	 *
+	 * set some defaults
+	 */
 	public function __construct($request = NULL, $get = NULL)
 	{
 		if ($request) $this->request = $request;
 		if ($get) $this->get = $get;
 	}
 
+	/**
+	 * @return mixed
+	 *
+	 * get the icons from the url
+	 */
 	public function getEmojy()
 	{
 		/**
@@ -31,25 +44,39 @@ class Emojy
 		return str_replace('%', '', $emojyIcons);
 	}
 
+	/**
+	 * @param $emojyString
+	 *
+	 * @return null
+	 *
+	 *  maps the [EMOJIS] to unique INTEGER
+	 */
 	public function getEmojyMessage($emojyString)
 	{
-		foreach ($this->parseEmojy() as $v) {
+		foreach ($this->parseEmoji() as $v) {
 			if (strpos($emojyString, $v['utf8']) !== FALSE) $emojyString = str_replace($v['utf8'], '-' . $v['utf8'] . '-', $emojyString);
 		}
 
 		$emojyString = array_filter(explode('-', $emojyString));
 
 		$arr = [];
-		foreach ($emojyString as $val) $arr[] = $this->parseEmojy(NULL, $val);
+		foreach ($emojyString as $val) $arr[] = $this->parseEmoji(NULL, $val);
 
 		return $this->toArray($arr);
 	}
 
+	/**
+	 * @param $emojyString
+	 *
+	 * @return null
+	 *
+	 *  maps the [EMOJIS] to unique INTEGER
+	 */
 	public function getUniqueEmojy($emojyString)
 	{
 		$arr = [];
-		foreach ($this->parseEmojy() as $v) {
-			if (strpos($emojyString, $v['utf8']) !== FALSE) $arr[] = $this->parseEmojy(NULL, $v['utf8']);
+		foreach ($this->parseEmoji() as $v) {
+			if (strpos($emojyString, $v['utf8']) !== FALSE) $arr[] = $this->parseEmoji(NULL, $v['utf8']);
 		}
 
 		return $this->toArray($arr);
@@ -64,6 +91,51 @@ class Emojy
 	}
 
 	/**
+	 * @param null $data
+	 *
+	 * @return array|null
+	 */
+	public function getEmojyById($data = NULL)
+	{
+		if (!$data) return NULL;
+
+		$data   = isset($data[0]) ? $data : [$data];
+		$emojis = $this->emojyData();
+		$arr    = [];
+
+		foreach ($data as $value) {
+			foreach ($emojis as $k => $emoji) {
+				if ($emoji['key'] == $value) $arr[] = $emoji;
+			}
+		}
+
+		return $arr;
+	}
+
+	/**
+	 * @param null $data
+	 *
+	 * @return array|null
+	 */
+	public function getEmojyByValue($data = NULL)
+	{
+		if (!$data) return NULL;
+
+		$data = is_array($data) ? $data : [$data];
+		$emojis = $this->emojyData();
+		$arr  = [];
+
+		foreach ($data as $value) {
+			$value = str_replace('%', '', urlencode($value));
+			foreach ($emojis as $k => $emoji) {
+				if ($emoji['utf8'] == $value) $arr[] = $emoji;
+			}
+		}
+
+		return $arr;
+	}
+
+	/**
 	 * @param null $key
 	 * @param null $utf8
 	 * @param null $value
@@ -72,7 +144,7 @@ class Emojy
 	 *
 	 * @return array|mixed
 	 */
-	public function parseEmojy($key = NULL, $utf8 = NULL, $value = NULL)
+	public function parseEmoji($key = NULL, $utf8 = NULL, $value = NULL)
 	{
 		$emojis = $this->emojyData();
 

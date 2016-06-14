@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="249a5645-d3d5-461c-928b-f2e5bb58fe7c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/emoji.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/emoji.php" afterPath="$PROJECT_DIR$/emoji.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sms.php" afterPath="$PROJECT_DIR$/sms.php" />
     </list>
     <ignored path="afterschool.iws" />
@@ -48,9 +48,23 @@
       <file leaf-file-name="sms.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sms.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="324">
+              <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
+              <folding>
+                <marker date="1465873023807" expanded="true" signature="347:888" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="354:661" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="668:888" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="702:888" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="721:888" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="747:888" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="774:888" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="2042:2414" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="2069:2414" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="2098:2414" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="2194:2414" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="2207:2314" ph="..." />
+                <marker date="1465873023807" expanded="true" signature="2381:2414" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,8 +72,8 @@
       <file leaf-file-name="emoji.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/emoji.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="830">
-              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+            <state relative-caret-position="1036">
+              <caret line="117" column="25" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -68,8 +82,8 @@
       <file leaf-file-name="todo.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/todo.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="10" column="59" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="59" />
+            <state relative-caret-position="154">
+              <caret line="7" column="61" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -199,12 +213,20 @@
       <option name="presentableId" value="Default" />
       <updated>1465868765955</updated>
       <workItem from="1465868767258" duration="2082000" />
-      <workItem from="1465870992380" duration="98000" />
+      <workItem from="1465870992380" duration="2043000" />
     </task>
+    <task id="LOCAL-00001" summary="updates">
+      <created>1465871096858</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1465871096858</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2180000" />
+    <option name="totallyTimeSpent" value="4125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -241,6 +263,12 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
@@ -266,7 +294,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1465873023807" expanded="true" signature="347:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="354:661" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="668:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="702:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="721:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="747:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="774:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2042:2414" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2069:2414" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2098:2414" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2194:2414" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2207:2314" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2381:2414" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -280,16 +322,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/todo.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="59" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="45" />
+        <state relative-caret-position="154">
+          <caret line="7" column="61" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -304,17 +338,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/emoji.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="830">
-          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
+        <state relative-caret-position="1036">
+          <caret line="117" column="25" selection-start-line="117" selection-start-column="25" selection-end-line="117" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="45" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sms.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="324">
+          <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
+          <folding>
+            <marker date="1465873023807" expanded="true" signature="347:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="354:661" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="668:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="702:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="721:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="747:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="774:888" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2042:2414" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2069:2414" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2098:2414" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2194:2414" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2207:2314" ph="..." />
+            <marker date="1465873023807" expanded="true" signature="2381:2414" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
